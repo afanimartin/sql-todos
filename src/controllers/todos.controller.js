@@ -19,6 +19,18 @@ const add = (content) => {
   });
 };
 
+const fetchOne = (id) => {
+  return new Promise((resolve, reject) => {
+    db.get(`SELECT * FROM Todos WHERE id=?`, [id], (error, row) => {
+      if(error){
+        reject(error)
+      } else {
+        resolve(row)
+      }
+    })
+  })
+}
+
 // Fetch all items from the database
 const fetchAll = () => {
   return new Promise((resolve, reject) => {
@@ -32,4 +44,4 @@ const fetchAll = () => {
   });
 };
 
-module.exports = { add, fetchAll };
+module.exports = { add, fetchOne, fetchAll };
