@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const { addHandler, fetchHandler } = require("../controllers/todos.controller.handler");
+const { addHandler, fetchAllHandler } = require("../controllers/todos.controller.handler");
 
 const todosRouter = Router();
 
 todosRouter.post("/", addHandler)
-todosRouter.get("/", fetchHandler)
+todosRouter.get("/", fetchAllHandler)
 
 module.exports = todosRouter

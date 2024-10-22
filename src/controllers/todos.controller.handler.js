@@ -1,4 +1,4 @@
-const { add, fetch } = require("./todos.controller");
+const { add, fetchAll } = require("./todos.controller");
 
 const addHandler = async (req, res) => {
   try {
@@ -9,9 +9,9 @@ const addHandler = async (req, res) => {
   }
 };
 
-const fetchHandler = async (req, res) => {
+const fetchAllHandler = async (req, res) => {
   try {
-    const todos = await fetch();
+    const todos = await fetchAll();
     if (!todos) return res.status(500).json({ error: "could not fetch todos" });
     return res.status(200).json(todos);
   } catch (error) {
@@ -19,4 +19,4 @@ const fetchHandler = async (req, res) => {
   }
 };
 
-module.exports = { addHandler, fetchHandler };
+module.exports = { addHandler, fetchAllHandler };
