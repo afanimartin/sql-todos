@@ -1,4 +1,4 @@
-const { add, fetchAll } = require("./todos.controller");
+const { add, fetchOne, fetchAll } = require("./todos.controller");
 
 const addHandler = async (req, res) => {
   try {
@@ -8,6 +8,16 @@ const addHandler = async (req, res) => {
     console.error("Error adding todo: ", error);
   }
 };
+
+const fetchOneHandler = async (req, res) => {
+  try {
+    const response = await fetchOne(req.params.id)
+    console.log(response)
+    return res.status(200).json(response)
+  } catch(error){
+    console.error("Error fetching todo: ", error)
+  }
+}
 
 const fetchAllHandler = async (req, res) => {
   try {
@@ -19,4 +29,4 @@ const fetchAllHandler = async (req, res) => {
   }
 };
 
-module.exports = { addHandler, fetchAllHandler };
+module.exports = { addHandler, fetchOneHandler, fetchAllHandler };
